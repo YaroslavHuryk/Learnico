@@ -645,29 +645,53 @@ body {
     height: 42%;
     width: 100%;
     margin-bottom: 96px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 32px;
+    display: flex;
+    overflow: auto;
 }
 
 .feedback_card {
     background-color: #fff;
     border-radius: 15px;
+    height: 100%;
+    min-width: 428px;
     z-index: 1;
+    margin-right: 35px;
 }
 
 .feedback-card_content {
     margin: 32px;
 }
 
-.stars {}
+.stars {
+    margin-bottom: 32px;
+}
 
-.g-g-part_base-text {}
+.account {
+    display: flex;
+    margin-top: 32px;
+}
 
-.account {}
+.account-image {
+    margin-right: 16px;
+    margin-top: 12px;
+}
 
-.account-image {}
+.account-lable {
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #111827;
+    height: 72px;
+    margin: 0px;
+}
 
-.account-lable {}
-
-.account-company {}
+.account-company {
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #6B7280;
+}
