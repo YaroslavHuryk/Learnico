@@ -61,13 +61,13 @@
                                         <img class="stars_star" src="./images/star.png" alt="#">
                                         <img class="stars_star" src="./images/star.png" alt="#">
                                     </div>
-                                <p class="reviews-p">From 3k+ reviews</p>
+                                    <p class="reviews-p">From 3k+ reviews</p>
                                 </div>
                             </div>
                         </div>
                         <div class="main-images">
                             <img class="main-vector" src="./images/IMAGE_figure.svg">
-                            <img class="main-image" src="./images/IMAGE.png" alt="#">
+                            <img class="main-image-startscreen" src="./images/IMAGE.png" alt="#">
                         </div>
                     </div>
                 </div>
@@ -88,10 +88,10 @@
         </section>
         <section class="about-courses">
             <div class="main-content content-position">
-                <div class="main-content_content content-content-position">          
+                <div class="content-content-position">          
                     <img class="main-image" src="./images/IMAGE_courses.png" alt="#">          
-                    <div class="text-content">
-                        <h2 class="base-title">Premium courses from the industry leaders</h2>
+                    <div class="text-content-about padding-l">
+                        <h2 class="base-title base-title-ab">Premium courses from the industry leaders</h2>
                         <p class="paragraph base-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</p>
                         <div class="buttons">
                             <button class="black-button">Get started</button>
@@ -104,11 +104,11 @@
                 </div>
             </div>
         </section>
-        <section class="about-courses2">
-            <div class="main-content content-position2">
-                <div class="main-content_content content-content-position">          
-                    <div class="text-content">
-                        <h2 class="base-title">Premium courses from the industry leaders</h2>
+        <section class="about-courses">
+            <div class="main-content content-position">
+                <div class="content-content-position">          
+                    <div class="text-content-about padding-r">
+                        <h2 class="base-title base-title-ab">Premium courses from the industry leaders</h2>
                         <p class="paragraph base-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</p>
                         <div class="buttons">
                             <button class="black-button">Get started</button>
@@ -232,9 +232,7 @@
                             <p class="g-g-part_base-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique duis cursus mi quis viverra.</p>
                         </div>
                     </div>
-                    <div class="grid-green-part">
-                        <img src="./images/IMAGE_grow_your_knowledge.png" alt="">
-                    </div>
+                    <div class="grid-green-part"></div>
                     <div class="grid-grren-part2">
                         <div>
                             <img src="./images/ben-3.svg" alt="" class="green-vector">
@@ -266,7 +264,7 @@
                     <div class="turnabout">
                         <div class="feedback_card">
                             <div class="feedback-card_content">
-                                <div class="stars">
+                                <div class="feedback-stars">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
@@ -282,7 +280,7 @@
                         </div>
                         <div class="feedback_card">
                             <div class="feedback-card_content">
-                                <div class="stars">
+                                <div class="feedback-stars">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
@@ -298,7 +296,7 @@
                         </div>
                         <div class="feedback_card">
                             <div class="feedback-card_content">
-                                <div class="stars">
+                                <div class="feedback-stars">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
@@ -314,7 +312,7 @@
                         </div>
                         <div class="feedback_card">
                             <div class="feedback-card_content">
-                                <div class="stars">
+                                <div class="feedback-stars">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
                                     <img src="./images/black-star.svg" alt="black star">
@@ -405,61 +403,63 @@
         </section>
         <section class="footer">
             <div class="main-content">
-                <div class="footer-top-content">
-                    <div class="top-right-conteiner">
-                        <h4 class="base-tittle-footer-h4">Join our newsletter to stay up to date on features and releases.</h4>
-                        <div class="input-container">
-                            <input id="subscribe-input" name="username" type="text">
-                            <label  class="subscribe-lable" for="subscribe-input">Subscribe</label>   
+                <div class="flex-footer-column-content">
+                    <div class="footer-top-content">
+                        <div class="top-right-conteiner">
+                            <h4 class="base-tittle-footer-h4">Join our newsletter to stay up to date on features and releases.</h4>
+                            <div class="input-container">
+                                <input id="subscribe-input" name="username" type="text">
+                                <label  class="subscribe-lable" for="subscribe-input">Subscribe</label>   
+                            </div>
+                            <p class="text-under-input">By subscribing you agree to with our <a class="a-under-input" href="#">Privacy Policy</a> and provide consent to receive updates from our company.</p>
                         </div>
-                        <p class="text-under-input">By subscribing you agree to with our <a class="a-under-input" href="#">Privacy Policy</a> and provide consent to receive updates from our company.</p>
+                        <div class="top-left-container">
+                            <div class="footer-column">
+                                <h4 class="footer-column-tittle">Pages</h4>
+                                <a class="footer-link" href="#">Home</a>
+                                <a class="footer-link" href="#">About</a>
+                                <a class="footer-link" href="#">Contacnt</a>
+                                <a class="footer-link" href="#">Blog</a>
+                                <a class="footer-link" href="#">Courses</a>
+                                <a class="footer-link" href="#">Teachers</a>
+                            </div>
+                            <div class="footer-column">
+                                <h4 class="footer-column-tittle">CMS Pages</h4>
+                                <a class="footer-link" href="#">Blog Post</a>
+                                <a class="footer-link" href="#">Blog Categories</a>
+                                <a class="footer-link" href="#">Courses Single</a>
+                                <a class="footer-link" href="#">Courses Categories</a>
+                                <a class="footer-link" href="#">Product Page</a>
+                                <a class="footer-link" href="#">Product Categories</a>
+                                <a class="footer-link" href="#">Teachers Single</a>
+                                <a class="footer-link" href="#">Episode Single</a>
+                            </div>
+                            <div class="footer-column">
+                                <h4 class="footer-column-tittle">Account Pages</h4>
+                                <a class="footer-link" href="#">Login</a>
+                                <a class="footer-link" href="#">Sign Up</a>
+                                <a class="footer-link" href="#">Forgot Password</a>
+                                <a class="footer-link" href="#">Reset Password</a>
+                                <a class="footer-link" href="#">Email Confirmation</a>
+                            </div>
+                            <div class="footer-column">
+                                <h4 class="footer-column-tittle">Utility Pages</h4>
+                                <a class="footer-link" href="#">Style Guide</a>
+                                <a class="footer-link" href="#">Changelog</a>
+                                <a class="footer-link" href="#">Licenses</a>
+                                <a class="footer-link" href="#">404</a>
+                                <a class="footer-link" href="#">Password</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="top-left-container">
-                        <div class="footer-column">
-                            <h4 class="footer-column-tittle">Pages</h4>
-                            <a class="footer-link" href="#">Home</a>
-                            <a class="footer-link" href="#">About</a>
-                            <a class="footer-link" href="#">Contacnt</a>
-                            <a class="footer-link" href="#">Blog</a>
-                            <a class="footer-link" href="#">Courses</a>
-                            <a class="footer-link" href="#">Teachers</a>
+                    <div class="footer-line"></div>
+                    <div class="footer-bottom-content">
+                        <p class="footer-license">© Learnico by Minimal Square. Powered by Webflow.</p>
+                        <div class="footer-social-networks-icons">
+                            <img src="./images/facebook_logo.png" alt="Facebook logo">
+                            <img src="./images/x_logo.png" alt="Twitter logo">
+                            <img src="./images/intagram-logo.png" alt="Instagam logo">
                         </div>
-                        <div class="footer-column">
-                            <h4 class="footer-column-tittle">CMS Pages</h4>
-                            <a class="footer-link" href="#">Blog Post</a>
-                            <a class="footer-link" href="#">Blog Categories</a>
-                            <a class="footer-link" href="#">Courses Single</a>
-                            <a class="footer-link" href="#">Courses Categories</a>
-                            <a class="footer-link" href="#">Product Page</a>
-                            <a class="footer-link" href="#">Product Categories</a>
-                            <a class="footer-link" href="#">Teachers Single</a>
-                            <a class="footer-link" href="#">Episode Single</a>
-                        </div>
-                        <div class="footer-column">
-                            <h4 class="footer-column-tittle">Account Pages</h4>
-                            <a class="footer-link" href="#">Login</a>
-                            <a class="footer-link" href="#">Sign Up</a>
-                            <a class="footer-link" href="#">Forgot Password</a>
-                            <a class="footer-link" href="#">Reset Password</a>
-                            <a class="footer-link" href="#">Email Confirmation</a>
-                        </div>
-                        <div class="footer-column">
-                            <h4 class="footer-column-tittle">Utility Pages</h4>
-                            <a class="footer-link" href="#">Style Guide</a>
-                            <a class="footer-link" href="#">Changelog</a>
-                            <a class="footer-link" href="#">Licenses</a>
-                            <a class="footer-link" href="#">404</a>
-                            <a class="footer-link" href="#">Password</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-line"></div>
-                <div class="footer-bottom-content">
-                    <p class="footer-license">© Learnico by Minimal Square. Powered by Webflow.</p>
-                    <div class="footer-social-networks-icons">
-                        <img src="./images/facebook_logo.png" alt="Facebook logo">
-                        <img src="./images/x_logo.png" alt="Twitter logo">
-                        <img src="./images/intagram-logo.png" alt="Instagam logo">
                     </div>
                 </div>
             </div>
