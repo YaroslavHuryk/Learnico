@@ -1,30 +1,75 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const clicksElements = [...document.querySelectorAll(".feedback_card")];
+  let list = document.querySelector(".turnabout");
+  let elements = document.querySelectorAll(".feedback_card");
 
-  function clickFunction() {
-    clicksElements.forEach((element) => {
-      element.classList.toggle("turn-right");
-      console.log(element.classList);
+  let l = 0;
+  let r = 2;
+  let rightElement = elements[r];
+  let leftElement = elements[l];
+
+  function rightDirectionClick() {
+    elements = document.querySelectorAll(".feedback_card");
+    if (l >= 0 && r >= 0) {
+      removeListener();
+      l = l + 2;
+      r = r + 2;
+      leftElement = elements[l];
+      rightElement = elements[r];
+      addListener();
+    }
+  }
+
+  addListener();
+
+  function leftDirectionClick() {
+    elements = document.querySelectorAll(".feedback_card");
+    if (l >= 1 && r >= 3) {
+      removeListener();
+      l = l - 2;
+      r = r - 2;
+      leftElement = elements[l];
+      rightElement = elements[r];
+      addListener();
+    }
+  }
+
+  function rightHandleClick() {
+    addFeedBackCard();
+    rightDirectionClick();
+    list.scrollBy({
+      left: 926,
+      behavior: "smooth",
     });
-    clicksElements.forEach((element) => {
-      element.classList.toggle("turn-left");
-      console.log(element.classList);
+    // removeFeedBackCard();
+  }
+  function leftHandleClick() {
+    leftDirectionClick();
+    list.scrollBy({
+      left: -926,
+      behavior: "smooth",
     });
   }
 
-  // function directionClick() {
-  //   for (let index = 0; index < clicksElements.length; index++) {
-  //     const element = array[index];
-  //     if (index == 1) {
-  //       element.classList.toggle(".left");
-  //     }
-  //     if (index == 3) {
-  //       element.classList.toggle(".right");
-  //     }
+  function addFeedBackCard() {
+    elements.forEach((element) => {
+      let newCard = element.cloneNode(true);
+      list.appendChild(newCard);
+    });
+  }
+
+  // function removeFeedBackCard() {
+  //   for (i = 0; i <= 1; i++) {
+  //     elements[i].style.display = "hidden";
   //   }
   // }
 
-  clicksElements.forEach((element) => {
-    element.addEventListener("click", clickFunction);
-  });
+  function removeListener() {
+    leftElement.removeEventListener("click", leftHandleClick);
+    rightElement.removeEventListener("click", rightHandleClick);
+  }
+
+  function addListener() {
+    rightElement.addEventListener("click", rightHandleClick);
+    leftElement.addEventListener("click", leftHandleClick);
+  }
 });
