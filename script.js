@@ -1,75 +1,99 @@
 document.addEventListener("DOMContentLoaded", function () {
   let list = document.querySelector(".turnabout");
   let elements = document.querySelectorAll(".feedback_card");
-
   let l = 0;
   let r = 2;
+  let counter = 0;
   let rightElement = elements[r];
   let leftElement = elements[l];
 
-  function rightDirectionClick() {
-    elements = document.querySelectorAll(".feedback_card");
-    if (l >= 0 && r >= 0) {
-      removeListener();
-      l = l + 2;
-      r = r + 2;
-      leftElement = elements[l];
-      rightElement = elements[r];
-      addListener();
+  elements.forEach((el) => {
+    counter++;
+    if (counter % 2 != 0 && counter < elements.length - 1 && counter > 1) {
+      el.addEventListener("mouseenter", () => {
+        el.classList.add("hovered");
+      });
+      el.addEventListener("mouseleave", () => {
+        el.classList.remove("hovered");
+      });
     }
+  });
+
+  list.addEventListener("mousedown", function (event) {
+    // Перевіряємо, чи натиснута ліва кнопка миші (код 1)
+    if (event.button === 0) {
+      // Відміняємо подію прокручування за допомогою зажиму лівої клавіші миші
+      window.addEventListener("mousemove", preventScrolling);
+      window.addEventListener("mouseup", removePreventScrolling);
+    }
+  });
+  function preventScrolling(event) {
+    event.preventDefault();
+  }
+  function removePreventScrolling() {
+    window.removeEventListener("mousemove", preventScrolling);
+    window.removeEventListener("mouseup", removePreventScrolling);
   }
 
-  addListener();
+  cursorPointer(rightElement);
+  rightElement.addEventListener("click", rightHandleClick);
+
+  function rightDirectionClick() {
+    elements = document.querySelectorAll(".feedback_card");
+    removeListener();
+    l = l + 2;
+    r = r + 2;
+    leftElement = elements[l];
+    cursorPointer(leftElement);
+    leftElement.addEventListener("click", leftHandleClick);
+
+    if (r < elements.length - 1) {
+      rightElement = elements[r];
+      cursorPointer(rightElement);
+      rightElement.addEventListener("click", rightHandleClick);
+    }
+  }
 
   function leftDirectionClick() {
     elements = document.querySelectorAll(".feedback_card");
-    if (l >= 1 && r >= 3) {
-      removeListener();
-      l = l - 2;
-      r = r - 2;
+    removeListener();
+    l = l - 2;
+    r = r - 2;
+    if (l > 0) {
       leftElement = elements[l];
-      rightElement = elements[r];
-      addListener();
+      cursorPointer(leftElement);
+      leftElement.addEventListener("click", leftHandleClick);
     }
+    rightElement = elements[r];
+    cursorPointer(rightElement);
+    rightElement.addEventListener("click", rightHandleClick);
   }
 
   function rightHandleClick() {
-    addFeedBackCard();
-    rightDirectionClick();
     list.scrollBy({
-      left: 926,
+      left: 1200,
       behavior: "smooth",
     });
-    // removeFeedBackCard();
+    rightDirectionClick();
   }
   function leftHandleClick() {
-    leftDirectionClick();
     list.scrollBy({
-      left: -926,
+      left: -1200,
       behavior: "smooth",
     });
+    leftDirectionClick();
   }
-
-  function addFeedBackCard() {
-    elements.forEach((element) => {
-      let newCard = element.cloneNode(true);
-      list.appendChild(newCard);
-    });
-  }
-
-  // function removeFeedBackCard() {
-  //   for (i = 0; i <= 1; i++) {
-  //     elements[i].style.display = "hidden";
-  //   }
-  // }
 
   function removeListener() {
     leftElement.removeEventListener("click", leftHandleClick);
     rightElement.removeEventListener("click", rightHandleClick);
   }
 
-  function addListener() {
-    rightElement.addEventListener("click", rightHandleClick);
-    leftElement.addEventListener("click", leftHandleClick);
+  function cursorPointer(someElement) {
+    if (someElement !== undefined && someElement !== null) {
+      someElement.style.cursor = "pointer";
+    } else {
+      console.log("Error! element is not defined");
+    }
   }
 });

@@ -34,6 +34,10 @@ html {
     height: 72px;
     display: flex;
     justify-content: flex-end;
+    width: 100vw;
+    position: fixed;
+    background-color: #00353BFF;
+    z-index: 10;
 }
 
 .menu_ul {
@@ -67,11 +71,12 @@ html {
     justify-content: flex-end;
     gap: 25px;
     position: relative;
-    padding-left: calc(50% - 458px);
+    padding-left: calc(50% - 458px - 80px);
     height: 100%;
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-weight: 400;
+    padding-right: 5.5%
 }
 
 .right-menu {
@@ -112,7 +117,7 @@ html {
     justify-content: space-between;
     height: 83%;
     width: 100%;
-    padding-top: 48px;
+    padding-top: 120px;
 }
 
 .text-content {
@@ -794,12 +799,21 @@ html {
     overflow: auto;
 }
 
+.turnabout::-webkit-scrollbar {
+    width: 0;
+    /* Приховуємо повзунок */
+}
+
 .feedback_card {
     background-color: #fff;
     border-radius: 15px;
     height: 100%;
     min-width: 428px;
     margin-right: 35px;
+}
+
+.feedback_card.hovered {
+    background-color: #d6e1f5;
 }
 
 .feedback-card_content {
