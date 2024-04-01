@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let list = document.querySelector(".turnabout");
+  const list = document.querySelector(".turnabout");
   let elements = document.querySelectorAll(".feedback_card");
   let l = 0;
   let r = 2;
@@ -27,9 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
       window.addEventListener("mouseup", removePreventScrolling);
     }
   });
+
   function preventScrolling(event) {
     event.preventDefault();
   }
+
   function removePreventScrolling() {
     window.removeEventListener("mousemove", preventScrolling);
     window.removeEventListener("mouseup", removePreventScrolling);
@@ -95,5 +97,31 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.log("Error! element is not defined");
     }
+  }
+
+  const allLinks = document.querySelectorAll("li[data-goto]");
+
+  if (allLinks.length > 0) {
+    allLinks.forEach((allLinks) => {
+      allLinks.addEventListener("click", scrollToLink);
+
+      function scrollToLink(event) {
+        const link = event.target;
+
+        const targetClass = link.dataset.goto;
+        const gotoBlock = document.querySelector(targetClass);
+
+        if (gotoBlock && targetClass) {
+          const goLength =
+            gotoBlock.getBoundingClientRect().top + window.pageYOffset;
+
+          window.scrollTo({
+            top: goLength,
+            behavior: "smooth",
+          });
+          event.preventDefault();
+        }
+      }
+    });
   }
 });
