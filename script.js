@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.removeEventListener("mousemove", preventScrolling);
     window.removeEventListener("mouseup", removePreventScrolling);
   }
+  //////////////////// малий скрол
 
   cursorPointer(rightElement);
   rightElement.addEventListener("click", rightHandleClick);
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function rightDirectionClick() {
     elements = document.querySelectorAll(".feedback_card");
     removeListener();
+    elements[r].classList.remove("hovered");
     l = l + 2;
     r = r + 2;
     leftElement = elements[l];
@@ -59,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function leftDirectionClick() {
     elements = document.querySelectorAll(".feedback_card");
     removeListener();
+    elements[l].classList.remove("hovered");
     l = l - 2;
     r = r - 2;
     if (l > 0) {
@@ -98,30 +101,85 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Error! element is not defined");
     }
   }
+  ////великий скрол
 
   const allLinks = document.querySelectorAll("li[data-goto]");
 
   if (allLinks.length > 0) {
     allLinks.forEach((allLinks) => {
       allLinks.addEventListener("click", scrollToLink);
-
-      function scrollToLink(event) {
-        const link = event.target;
-
-        const targetClass = link.dataset.goto;
-        const gotoBlock = document.querySelector(targetClass);
-
-        if (gotoBlock && targetClass) {
-          const goLength =
-            gotoBlock.getBoundingClientRect().top + window.pageYOffset;
-
-          window.scrollTo({
-            top: goLength,
-            behavior: "smooth",
-          });
-          event.preventDefault();
-        }
-      }
     });
+  }
+
+  function scrollToLink(event) {
+    const link = event.target;
+
+    const targetClass = link.dataset.goto;
+    const gotoBlock = document.querySelector(targetClass);
+
+    if (gotoBlock && targetClass) {
+      const goLength =
+        gotoBlock.getBoundingClientRect().top + window.pageYOffset;
+
+      window.scrollTo({
+        top: goLength,
+        behavior: "smooth",
+      });
+      event.preventDefault();
+    }
+  }
+
+  // пошук
+
+  const searchButton = document.querySelector(".search-link");
+  const searchContainer = document.querySelector(".search-container");
+
+  searchButton.addEventListener("click", hideSearchButton);
+
+  function hideSearchButton() {
+    searchButton.style.display = "none";
+    const searchField = document.createElement("input");
+    searchField.classList.add("search-input");
+    searchField.setAttribute("type", "search");
+    searchContainer.appendChild(searchField);
+    searchField.addEventListener("keydown", pressEnter);
+    function pressEnter(event) {
+      if (event.key === "Enter") {
+        const searchText = searchField.value;
+        scrollToLinkTwo(searchText);
+        searchField.style.display = "none";
+        searchButton.style.display = "block";
+      }
+    }
+  }
+
+  const searchResult = {
+    about: ".platform-container",
+    courses: ".about-courses",
+    home: ".start-container",
+    blog: ".blog",
+    contacts: ".start-learn",
+  };
+
+  function scrollToLinkTwo(value) {
+    let gotoSearch;
+
+    for (const key in searchResult) {
+      if (value == key) {
+        console.log(key);
+        gotoSearch = document.querySelector(searchResult[key]);
+        console.log(gotoSearch);
+        break;
+      }
+    }
+    if (gotoSearch) {
+      const goLength =
+        gotoSearch.getBoundingClientRect().top + window.pageYOffset;
+
+      window.scrollTo({
+        top: goLength,
+        behavior: "smooth",
+      });
+    }
   }
 });
