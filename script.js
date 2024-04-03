@@ -142,31 +142,34 @@ document.addEventListener("DOMContentLoaded", function () {
     searchField.classList.add("search-input");
     searchField.setAttribute("type", "search");
     searchContainer.appendChild(searchField);
-    searchField.addEventListener("keydown", pressEnter);
-    function pressEnter(event) {
-      if (event.key === "Enter") {
-        const searchText = searchField.value;
-        scrollToLinkTwo(searchText);
-        searchField.style.display = "none";
-        searchButton.style.display = "block";
-      }
+    searchField.addEventListener("keydown", (event) => {
+      pressEnter(event, searchField, suggestions);
+    });
+
+    const suggestions = document.createElement("ul");
+    suggestions.classList.add("suggestions-ul");
+
+    searchField.addEventListener("input", () => {
+      hintSearch(searchField, suggestions);
+    }); //реалізація складнішого пошуку
+  }
+
+  function pressEnter(event, searchField, suggestions) {
+    if (event.key === "Enter") {
+      const searchText = searchField.value;
+      scrollToLinkTwo(searchText);
+      searchField.style.display = "none";
+      searchButton.style.display = "block";
+      suggestions.style.display = "none";
     }
   }
 
-  const searchResult = {
-    about: ".platform-container",
-    courses: ".about-courses",
-    home: ".start-container",
-    blog: ".blog",
-    contacts: ".start-learn",
-  };
-
   function scrollToLinkTwo(value) {
     let gotoSearch;
-
     for (const key in searchResult) {
-      if (value == key) {
-        console.log(key);
+      const lowerKey = value.trim().toLowerCase();
+
+      if (lowerKey == key) {
         gotoSearch = document.querySelector(searchResult[key]);
         console.log(gotoSearch);
         break;
@@ -182,4 +185,56 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+
+  // реалізація підказок
+
+  function hintSearch(searchField, suggestions) {
+    const inputText = searchField.value.trim().toLowerCase();
+    const matchingWords = searchWords.filter((word) =>
+      word.toLowerCase().startsWith(inputText)
+    );
+
+    displayHints(matchingWords, suggestions);
+  }
+
+  function displayHints(matchingWords, suggestions) {
+    suggestions.innerHTML = "";
+
+    if (matchingWords.length == 0) {
+      const suggestionLi = document.createElement("li");
+      suggestionLi.classList.add("suggestion-li");
+
+      suggestionLi.innerText = "Nothing...";
+      suggestions.appendChild(suggestionLi);
+    } else {
+      matchingWords.forEach((element) => {
+        const suggestionLi = document.createElement("li");
+        suggestionLi.classList.add("suggestion-li");
+
+        suggestionLi.innerText = element;
+        suggestions.appendChild(suggestionLi);
+      });
+    }
+    searchContainer.appendChild(suggestions);
+  }
+
+  // масив і об'єкт з можливими варіантами введення
+
+  const searchResult = {
+    about: ".platform-container",
+    courses: ".about-courses",
+    home: ".start-container",
+    blog: ".blog",
+    contacts: ".start-learn",
+    reviews: ".feedback",
+  };
+
+  const searchWords = [
+    "about",
+    "courses",
+    "home",
+    "blog",
+    "contacts",
+    "reviews",
+  ];
 });
