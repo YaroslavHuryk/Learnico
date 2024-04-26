@@ -494,7 +494,7 @@ html {
 /* ------------------------------------------ p o p u l a r  c o u r s e s -------------------------- */
 
 .popular-courses-container {
-    height: 100vh;
+    height: 880px;
     width: 100vw;
 }
 
@@ -634,6 +634,14 @@ html {
 }
 
 @media (max-width:1050px) {
+    .popular-courses-container {
+        height: 660px;
+    }
+
+    .pop-bottom-grid {
+        height: 400px;
+    }
+
     .green-button-card {
         width: 120px;
     }
@@ -642,7 +650,8 @@ html {
 /* -------------------------------- c o m m u n i t y ----------------------------- */
 
 .community-container {
-    height: 116vh;
+    /* height: 116vh; */
+    height: 1020px;
     width: 100vw;
 }
 
@@ -687,6 +696,10 @@ html {
 }
 
 @media (max-height:800px) {
+    .community-container {
+        height: 900px;
+    }
+
     .base-title-community {
         font-size: 2.5rem;
         margin-bottom: 0px;
@@ -737,7 +750,8 @@ html {
 /* --------------------------------------------- b e n e f i t s ------------------------------ */
 
 .benefits {
-    height: 133.5vh;
+    /* height: 133.5vh; */
+    height: 1047px;
     width: 100%;
 }
 
@@ -798,19 +812,21 @@ html {
 }
 
 @media (max-height:790px) {
-    .button-com {
-        height: calc(12.4%/2);
+    .benefits {
+        height: 1047px;
     }
 
     .benefits_grid-container {
         padding-top: 40px;
+        height: 450px;
     }
 }
 
 /* ---------------------- f e e d  b a c k ----------------- */
 
 .feedback {
-    height: 88.5vh;
+    /* height: 88.5vh; */
+    height: 780px;
     width: 100vw;
     background: linear-gradient(to bottom, white 50%, #00353BFF 50%);
 }
@@ -836,7 +852,8 @@ html {
 }
 
 .turnabout {
-    height: 42%;
+    /* height: 42%; */
+    height: 328px;
     width: 100%;
     margin-bottom: 96px;
     display: flex;
@@ -890,6 +907,13 @@ html {
 }
 
 @media (max-height:750px) {
+    .feedback {
+        height: 610px;
+    }
+
+    .turnabout {
+        height: 250px;
+    }
 
     .feedback-card_content {
         margin: 16px;
